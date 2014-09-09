@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js"></script><script src="js/script.js" type="text/javascript"></script>  <title>Sample Page</title>
+    <title>Login</title>
+ </head>
+ <body>
+<p id="test1">This is a paragraph.</p>
+  <form action="dashboard.html">
+   User name: <input id="username" type="text" /><br />
+   Remember Me <input id="rememberMeCbx" type="checkbox" /><br />
+   <input name="Login" type="submit" value="Login" /></form>
+<script>
+  $(document).ready(function(){
+    $("#username").val(retrieveUsername());
+    $("#rememberMeCbx").click(function(){
+      storeUsername($("#username").val());
+    });
+  });
+  
+  var COOKIE_NAME="USERNAME";
+  
+  function retrieveUsername() {
+    var username=$.cookie(COOKIE_NAME);
+    return username;
+  }
+  
+  function storeUsername(username) {
+    console.log("Storing "+username);
+    $.cookie(COOKIE_NAME, username, { path: '/', expires : 1 });
+  }
+  </script>
+
+ </body>
+</html>
